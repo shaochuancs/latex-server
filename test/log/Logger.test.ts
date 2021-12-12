@@ -6,9 +6,9 @@
 
 const log4js = require('log4js');
 
-import Logger from '../../src/log/Logger';
+import Logger from '../../src/logger/Logger';
 
-const exampleLogMessage = 'example log message';
+const exampleLogMessage = 'example logger message';
 
 const messageObject = {message: 'example message'};
 const messageObjectString = JSON.stringify(messageObject);
@@ -32,37 +32,37 @@ test('Should be able to shutdown log4js', () => {
   expect(spyShutdown).toHaveBeenCalled();
 });
 
-test('Should be able to log trace text', () => {
+test('Should be able to logger trace text', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'trace');
   Logger.trace(exampleLogMessage);
   expect(spyDefault).toHaveBeenCalledWith(exampleLogMessage);
 });
 
-test('Should be able to log debug text', () => {
+test('Should be able to logger debug text', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'debug');
   Logger.debug(exampleLogMessage);
   expect(spyDefault).toHaveBeenCalledWith(exampleLogMessage);
 });
 
-test('Should be able to log info text', () => {
+test('Should be able to logger info text', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'info');
   Logger.info(exampleLogMessage);
   expect(spyDefault).toHaveBeenCalledWith(exampleLogMessage);
 });
 
-test('Should be able to log warn text', () => {
+test('Should be able to logger warn text', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'warn');
   Logger.warn(exampleLogMessage);
   expect(spyDefault).toHaveBeenCalledWith(exampleLogMessage);
 });
 
-test('Should be able to log error text', () => {
+test('Should be able to logger error text', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'error');
   Logger.error(exampleLogMessage);
   expect(spyDefault).toHaveBeenCalledWith(exampleLogMessage);
 });
 
-test('Should be able to log fatal text', () => {
+test('Should be able to logger fatal text', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'fatal');
   Logger.fatal(exampleLogMessage);
   expect(spyDefault).toHaveBeenCalledWith(exampleLogMessage);
@@ -73,31 +73,31 @@ test('Should be able to log fatal text', () => {
 });
 
 
-test('Should be able to log trace object', () => {
+test('Should be able to logger trace object', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'trace');
   Logger.trace(messageObject);
   expect(spyDefault).toHaveBeenCalledWith(messageObjectString);
 });
 
-test('Should be able to log debug object', () => {
+test('Should be able to logger debug object', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'debug');
   Logger.debug(messageObject);
   expect(spyDefault).toHaveBeenCalledWith(messageObjectString);
 });
 
-test('Should be able to log warn object', () => {
+test('Should be able to logger warn object', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'warn');
   Logger.warn(errorObject);
   expect(spyDefault).toHaveBeenCalledWith(stackText);
 });
 
-test('Should be able to log error object', () => {
+test('Should be able to logger error object', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'error');
   Logger.error(errorObject);
   expect(spyDefault).toHaveBeenCalledWith(stackText);
 });
 
-test('Should be able to log fatal object', () => {
+test('Should be able to logger fatal object', () => {
   const spyDefault = jest.spyOn(Logger['loggerOfCategory']['default'], 'fatal');
   Logger.fatal(errorObject);
   expect(spyDefault).toHaveBeenCalledWith(stackText);
@@ -107,7 +107,7 @@ test('Should be able to log fatal object', () => {
   expect(spyLaTeX).toHaveBeenCalledWith(stackText);
 });
 
-test('Should be able to log error text with supplementary information', () => {
+test('Should be able to logger error text with supplementary information', () => {
   const spyLaTeX = jest.spyOn(Logger['loggerOfCategory']['default'], 'error');
   Logger.error(exampleLogMessage, Logger.CATEGORY.DEFAULT, exampleSupplementary);
   expect(spyLaTeX).toHaveBeenCalledWith(exampleLogMessage + '\nsupplementary:\n{"supplementary_message":"example supplementary information"}');

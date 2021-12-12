@@ -6,6 +6,8 @@
     "access": {
       "type": "dateFile",
       "filename": "log/access.log",
+      "maxLogSize": 10485760,
+      "compress": true,
       "keepFileExt": true
     },
     "app": {

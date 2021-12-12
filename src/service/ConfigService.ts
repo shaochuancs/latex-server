@@ -8,6 +8,7 @@ import Configuration from "../model/Configuration";
 
 class ConfigService {
   private static config:Configuration = {
+    PORT: 3000,
     SECRET: 'default_secret'
   };
 

@@ -5,13 +5,24 @@
 'use strict';
 
 import configure from "./configure";
+import init from "./init";
+import Logger from "./logger/Logger";
+import launch from "./launch";
 
 async function main() {
   configure();
+  init();
+  launch();
 }
 
 main().then(()=>{
-  console.log('System successfully booted!');
+  Logger.info('System booted successfully!');
 }, (error)=>{
-  console.log(error);
+  Logger.error(error);
+  Logger.fatal('System failed to boot!');
+});
+
+process.on('SIGINT', ()=>{
+  Logger.shutdown();
+  process.exit(1);
 });

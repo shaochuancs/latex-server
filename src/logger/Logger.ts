@@ -15,13 +15,13 @@ enum Category {
 }
 
 /**
- * A logger, which is used to record log message of various levels.
+ * A logger, which is used to record logger message of various levels.
  */
 class Logger {
   private static loggerOfCategory = initLoggerOfCategory(Category);
 
   /**
-   * Category of log, such as default and crash etc.
+   * Category of logger, such as default and crash etc.
    */
   static CATEGORY = Category;
 
@@ -35,7 +35,7 @@ class Logger {
   /**
    * trace object or text
    * @param t Target
-   * @param category Category of log
+   * @param category Category of logger
    */
   static trace(t: object | string, category: Category = Category.DEFAULT) {
     t = getLogMessageFromObject(t);
@@ -45,7 +45,7 @@ class Logger {
   /**
    * debug object or text
    * @param t Target
-   * @param category Category of log
+   * @param category Category of logger
    */
   static debug(t: object | string, category: Category = Category.DEFAULT) {
     t = getLogMessageFromObject(t);
@@ -53,18 +53,18 @@ class Logger {
   }
 
   /**
-   * log message
+   * logger message
    * @param m Message
-   * @param category Category of log
+   * @param category Category of logger
    */
   static info(m: string, category: Category = Category.DEFAULT) {
     Logger.loggerOfCategory[category].info(m);
   }
 
   /**
-   * log object or text warning
+   * logger object or text warning
    * @param e Error object or warning message
-   * @param category Category of log
+   * @param category Category of logger
    * @param supplementary Supplementary information of warning
    */
   static warn(e: Error | string, category: Category = Category.DEFAULT, supplementary?: object) {
@@ -73,9 +73,9 @@ class Logger {
   }
 
   /**
-   * log object or text error
+   * logger object or text error
    * @param e Error object or error message
-   * @param category Category of log
+   * @param category Category of logger
    * @param supplementary Supplementary information of error
    */
   static error(e: Error | string, category: Category = Category.DEFAULT, supplementary?: object) {
@@ -84,9 +84,9 @@ class Logger {
   }
 
   /**
-   * log object or text fatal error
+   * logger object or text fatal error
    * @param e Error object or error message
-   * @param category Category of log
+   * @param category Category of logger
    * @param supplementary Supplementary information of fatal error
    */
   static fatal(e: Error | string, category: Category = Category.DEFAULT, supplementary?: object) {

@@ -5,7 +5,8 @@
 'use strict';
 
 interface Configuration {
-  SECRET: string
+  SECRET: string,
+  PORT: number
 }
 
 export default Configuration;
