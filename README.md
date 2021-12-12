@@ -1,2 +1,2 @@
 # latex-server
-Web application providing LaTeX service
+Web application providing LaTeX typesetting service
