@@ -7,6 +7,7 @@
 import Logger from './logger/Logger';
 import ConfigService from "./service/ConfigService";
 import router from "./routes";
+import {getAccessRecordFromRequest} from "./utils/network";
 
 const express = require('express');
 
@@ -15,11 +16,12 @@ const express = require('express');
  */
 function launch(): void {
   const app = express();
-  const port = ConfigService.getConfig('PORT');
+  app.set('trust proxy', true);
 
-  // app.use(()=>{
-  //   // TODO implement access log from request object. Refer to https://github.com/expressjs/morgan
-  // });
+  app.use((req, res, next)=>{
+    console.log(getAccessRecordFromRequest(req));
+    next();
+  });
 
   app.use('/', router);
 
@@ -28,6 +30,7 @@ function launch(): void {
     res.status(500).send(err.message);
   });
 
+  const port = ConfigService.getConfig('PORT');
   app.listen(port, ()=>{
     Logger.info(`Application listening on port: ${port}`);
   }).on('close', Logger.shutdown);
