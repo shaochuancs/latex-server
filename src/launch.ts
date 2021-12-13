@@ -17,9 +17,9 @@ function launch(): void {
   const app = express();
   const port = ConfigService.getConfig('PORT');
 
-  app.use(()=>{
-    // TODO implement access log from request object. Refer to https://github.com/expressjs/morgan
-  });
+  // app.use(()=>{
+  //   // TODO implement access log from request object. Refer to https://github.com/expressjs/morgan
+  // });
 
   app.use('/', router);
 
