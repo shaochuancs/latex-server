@@ -11,7 +11,8 @@ const ESSerializer = require('esserializer');
 enum Category {
   CRASH = 'crash',
   DB = 'DB',
-  DEFAULT = 'default'
+  DEFAULT = 'default',
+  HTTP = 'http'
 }
 
 /**
