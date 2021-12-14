@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/shaochuancs/latex-server/tree/master.svg?style=svg)](https://circleci.com/gh/shaochuancs/latex-server/tree/master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ac9b8f9a99b2434da8aa/maintainability)](https://codeclimate.com/github/shaochuancs/latex-server/maintainability)
+
 # latex-server
 Web application providing LaTeX typesetting service
 
