@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/shaochuancs/latex-server/tree/master.svg?style=svg)](https://circleci.com/gh/shaochuancs/latex-server/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/shaochuancs/latex-server/badge.svg?branch=dev)](https://coveralls.io/github/shaochuancs/latex-server?branch=dev)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ac9b8f9a99b2434da8aa/maintainability)](https://codeclimate.com/github/shaochuancs/latex-server/maintainability)
 
 # latex-server
