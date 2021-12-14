@@ -1,0 +1,45 @@
+{
+  "appenders": {
+    "out": {
+      "type": "stdout"
+    },
+    "access": {
+      "type": "dateFile",
+      "filename": "log/access.log",
+      "compress": true,
+      "keepFileExt": true
+    },
+    "app": {
+      "type": "file",
+      "filename": "log/app.log",
+      "maxLogSize": 10485760,
+      "compress": true,
+      "keepFileExt": true
+    },
+    "error_file": {
+      "type": "file",
+      "filename": "log/error.log",
+      "maxLogSize": 10485760,
+      "compress": true,
+      "keepFileExt": true
+    },
+    "error": {
+      "type": "logLevelFilter",
+      "level": "error",
+      "appender": "error_file"
+    },
+    "crash": {
+      "type": "fileSync",
+      "filename": "log/crash.log",
+      "maxLogSize": 10485760,
+      "compress": true,
+      "keepFileExt": true
+    }
+  },
+  "categories": {
+    "crash": { "appenders": ["out", "crash"], "level": "fatal" },
+    "default": { "appenders": ["out", "app", "error"], "level": "info" },
+    "http": { "appenders": ["out", "access"], "level": "info" }
+  },
+  "pm2": true
+}
