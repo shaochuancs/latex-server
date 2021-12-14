@@ -33,14 +33,17 @@ class Logger {
     shutdown();
   }
 
+  private static logTarget(logMethod: string, t: object | string, category: Category = Category.DEFAULT) {
+    Logger.loggerOfCategory[category][logMethod](getLogMessageFromObject(t));
+  }
+
   /**
    * trace object or text
    * @param t Target
    * @param category Category of logger
    */
   static trace(t: object | string, category: Category = Category.DEFAULT) {
-    t = getLogMessageFromObject(t);
-    Logger.loggerOfCategory[category].trace(t);
+    this.logTarget('trace', t, category);
   }
 
   /**
@@ -49,8 +52,7 @@ class Logger {
    * @param category Category of logger
    */
   static debug(t: object | string, category: Category = Category.DEFAULT) {
-    t = getLogMessageFromObject(t);
-    Logger.loggerOfCategory[category].debug(t);
+    this.logTarget('debug', t, category);
   }
 
   /**
@@ -59,7 +61,11 @@ class Logger {
    * @param category Category of logger
    */
   static info(m: string, category: Category = Category.DEFAULT) {
-    Logger.loggerOfCategory[category].info(m);
+    this.logTarget('info', m, category);
+  }
+
+  private static logError(logMethod: string, e: Error | string, category: Category = Category.DEFAULT, supplementary?: object) {
+    Logger.loggerOfCategory[category][logMethod](getLogMessageFromError(e, supplementary));
   }
 
   /**
@@ -69,8 +75,7 @@ class Logger {
    * @param supplementary Supplementary information of warning
    */
   static warn(e: Error | string, category: Category = Category.DEFAULT, supplementary?: object) {
-    e = getLogMessageFromError(e, supplementary);
-    Logger.loggerOfCategory[category].warn(e);
+    this.logError('warn', e, category, supplementary);
   }
 
   /**
@@ -80,8 +85,7 @@ class Logger {
    * @param supplementary Supplementary information of error
    */
   static error(e: Error | string, category: Category = Category.DEFAULT, supplementary?: object) {
-    e = getLogMessageFromError(e, supplementary);
-    Logger.loggerOfCategory[category].error(e);
+    this.logError('error', e, category, supplementary);
   }
 
   /**
@@ -91,8 +95,7 @@ class Logger {
    * @param supplementary Supplementary information of fatal error
    */
   static fatal(e: Error | string, category: Category = Category.DEFAULT, supplementary?: object) {
-    e = getLogMessageFromError(e, supplementary);
-    Logger.loggerOfCategory[category].fatal(e);
+    this.logError('fatal', e, category, supplementary);
   }
 }
 
