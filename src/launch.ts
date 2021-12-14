@@ -7,7 +7,7 @@
 import Logger from './logger/Logger';
 import ConfigService from "./service/ConfigService";
 import router from "./routes";
-import {getAccessRecordFromRequest} from "./utils/network";
+import {generateAccessRecord} from "./utils/network";
 
 const express = require('express');
 
@@ -20,7 +20,7 @@ function launch(): void {
 
   app.use((req, res, next)=>{
     req.on('end', ()=>{
-      Logger.info(getAccessRecordFromRequest(req, res, new Date()), Logger.CATEGORY.HTTP);
+      Logger.info(generateAccessRecord(req, res, new Date()), Logger.CATEGORY.HTTP);
     });
     next();
   });
