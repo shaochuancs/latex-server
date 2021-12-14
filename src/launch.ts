@@ -19,12 +19,9 @@ function launch(): void {
   app.set('trust proxy', true);
 
   app.use((req, res, next)=>{
-    const originSend = res.send;
-    res.send = function(data) {
-      Logger.info(getAccessRecordFromRequest(req, res, data.length, new Date()), Logger.CATEGORY.HTTP);
-      res.send = originSend;
-      return res.send(data);
-    }
+    req.on('end', ()=>{
+      Logger.info(getAccessRecordFromRequest(req, res, new Date()), Logger.CATEGORY.HTTP);
+    });
     next();
   });
 
