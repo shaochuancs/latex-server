@@ -8,7 +8,7 @@
     "start": "node dist/bundle.js",
     "startDev": "nodemon --watch dist/bundle.js dist/bundle.js",
     "pretest": "npx eslint --ext .ts,.js ./",
-    "test": "npx jest && npx coveralls < coverage/lcov.info && rm -rf ./coverage"
+    "test": "TZ=UTC npx jest && npx coveralls < coverage/lcov.info && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
