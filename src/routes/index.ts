@@ -5,10 +5,11 @@
 'use strict';
 
 import {Request, Response, Router} from "express";
+import {MULTER_UPLOAD} from "../utils/constants";
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
+router.post('/generate', MULTER_UPLOAD.single('file'), (req: Request, res: Response) => {
   res.json({
     message: 'Hello, world'
   });
