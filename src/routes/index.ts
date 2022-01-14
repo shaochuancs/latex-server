@@ -28,10 +28,7 @@ router.post('/generate', MULTER_UPLOAD.single('file'), (req: Request, res: Respo
       return;
     }
 
-    const pdfPath = `${req.file.destination}/${getFilenameWithoutExtension(req.file.originalname)}.pdf`;
-    res.json({
-      message: 'Destination: ' + pdfPath
-    });
+    res.download(`${req.file.destination}/${getFilenameWithoutExtension(req.file.originalname)}.pdf`);
   });
 });
 
