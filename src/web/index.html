@@ -6,7 +6,8 @@
 </head>
 <body>
   <form action="/generate" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" accept=".tex">
+    <label for="texFile">Upload .tex file: </label>
+    <input id="texFile" type="file" name="file" accept=".tex">
     <button type="submit">Submit</button>
   </form>
 </body>
