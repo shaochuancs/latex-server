@@ -9,9 +9,15 @@ import {getFilenameWithoutExtension} from "../utils/text";
 import {MULTER_UPLOAD} from "../utils/constants";
 import Logger from "../logger/Logger";
 
+const path = require('path');
+
 const {spawn} = require('child_process');
 
 const router = Router();
+
+router.get('/', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, './web/index.html'));
+});
 
 router.post('/generate', MULTER_UPLOAD.single('file'), (req: Request, res: Response) => {
   const xelatex = spawn('xelatex', [req.file.originalname], {
