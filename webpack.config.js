@@ -1,3 +1,4 @@
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 const regExpExpressionDependency = /Critical dependency: the request of a dependency is an expression/;
@@ -19,6 +20,13 @@ module.exports = {
       exclude: /node_modules/
     }]
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {from: './src/web', to: 'web'}
+      ]
+    })
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },
