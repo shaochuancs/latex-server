@@ -9,11 +9,11 @@ Web application providing LaTeX typesetting service
 1. Run `git clone https://github.com/shaochuancs/latex-server.git`, or download [release package](https://github.com/shaochuancs/latex-server/releases).
 2. Run `npm install`
 3. Run `npm run build`
-4. Install [TeX Live](https://tug.org/texlive/) in server (if not yet)
+4. Install [TeX Live](https://tug.org/texlive/) on server (if not yet)
 
 ## Usage
 1. Run `npm start` to launch the server.
-2.   Open `http://localhost:3000` in browser to test.
+2. Open `http://localhost:3000` in browser. Upload .tex file and get PDF downloaded.
 
 ## API
 | URL         | HTTP Method | HTTP Content-Type   | Parameter  | Description                                                 |
