@@ -14,7 +14,7 @@ const MULTER_UPLOAD = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
       const folder = UPLOAD_FOLDER + '/' + Date.now() + '-' + Math.round(Math.random() * 1E9);
-      mkdir(folder, (err) => {
+      mkdir(folder, {recursive: true}, (err) => {
         if (err) {
           throw err;
         }
