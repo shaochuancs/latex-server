@@ -5,26 +5,30 @@
 # latex-server
 Web application providing LaTeX typesetting service
 
-## Install
+## Run in Docker
+
+The easiest way to run latex-server is through Docker image:
+
+`docker run -d -p 3000:3000 shaochuancs/latex-server`
+
+## Run in server
+
+You can also build from source code and run latex-server on your own server.
+
 1. Run `git clone https://github.com/shaochuancs/latex-server.git`, or download [release package](https://github.com/shaochuancs/latex-server/releases).
 2. Run `npm install`
 3. Run `npm run build`
 4. Install [TeX Live](https://tug.org/texlive/) on server (if not yet)
+5. Run `npm start` to launch the server.
 
 ## Usage
-1. Run `npm start` to launch the server.
-2. Open `http://localhost:3000` in browser. Upload .tex file and get PDF downloaded.
+
+Open `http://localhost:3000` in browser. Upload .tex file and get PDF downloaded.
 
 ## API
 | URL         | HTTP Method | HTTP Content-Type   | Parameter  | Description                                                 |
 |-------------|-------------|---------------------|------------|-------------------------------------------------------------|
 | /generate   | POST        | multipart/form-data | file       | Upload .tex file as name "file", and download generated PDF |
-
-## Advanced usage
-### Run server in cluster mode
-1. Install pm2 globally (if not yet): `npm install -g pm2`
-2. Install pm2-intercom to support logger in cluster mode: `pm2 install pm2-intercom`
-3. Start app: `pm2 start dist/bundle.js --name app -i max`
 
 ## Customization Service
 I'm also providing LaTeX Server customization service, please contact shaochuancs@gmail.com if you are interested.
